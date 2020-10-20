@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ReactComponent as Bartender } from '../../images/bartender.svg';
 import { ReactComponent as Cocktail } from '../../images/cocktail.svg';
 import { ReactComponent as Explosion } from '../../images/explosion.svg';
 

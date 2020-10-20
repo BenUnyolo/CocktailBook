@@ -13,7 +13,6 @@ import Login from './auth/Login';
 import CocktailList from './cocktails/CocktailList';
 import CocktailCreate from './cocktails/CocktailCreate';
 import CocktailEdit from './cocktails/CocktailEdit';
-import CocktailShow from './cocktails/CocktailShow';
 import history from '../history';
 
 class App extends React.Component {

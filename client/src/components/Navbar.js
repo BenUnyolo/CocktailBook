@@ -16,9 +16,7 @@ class Navbar extends React.Component {
   renderAddDrink() {
     if (this.props.isAuthenticated || localStorage.getItem('token')) {
       return (
-
             <Link to="/cocktails/new" className="nav-link">Add Drink</Link>
-
       )
     }
   }
@@ -38,8 +36,6 @@ class Navbar extends React.Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarContent">
             {/* links */}
-
-            
             <div className="navbar-nav mr-auto">
               <div className="nav-item">
               {this.renderAddDrink()}
