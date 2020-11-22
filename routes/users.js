@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
     // validation
     if (!username || !password) { res.status(400).json({ msg: "Please enter a username and password." }) }
 
-    const user = await User.findOne({ username: username });
+    const user = await User.findOne({ username: { $regex : new RegExp(username, "i") } });
     if (!user) { return res.status(400).json({ msg: "The username you entered did not match our records. Please try again." }) }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -46,10 +46,10 @@ router.post('/register', async (req, res) => {
     if (password.length < 6) { return res.status(400).json({ msg: "The password must be at least 6 characters long." }) }
     if (password !== passwordCheck) { return res.status(400).json({ msg: "The passwords you entered do not match." }) }
 
-    const existingUser = await User.findOne({ username: username });
+    const existingUser = await User.findOne({ username: { $regex : new RegExp(username, "i") } });
     if (existingUser) { return res.status(400).json({ msg: "This username is taken, please choose another." }) }
 
-    const existingEmail = await User.findOne({ email: email });
+    const existingEmail = await User.findOne({ email: { $regex : new RegExp(email, "i") } });
     if (existingEmail) { return res.status(400).json({ msg: "An account with this email already exists." }) }
 
     //first argument to genSalt function is saltRounds, strength of hashing, affects speed

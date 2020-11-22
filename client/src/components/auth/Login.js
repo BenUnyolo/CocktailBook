@@ -31,7 +31,7 @@ class Login extends React.Component {
     this.props.clearErrors();
   }
 
-    renderError = ({ error, touched }) => {
+  renderError = ({ error, touched }) => {
     if (touched && error) {
       return (
         <div className="alert alert-danger" role="alert">
@@ -60,7 +60,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        { this.state.msg ? (<div className="alert alert-danger" role="alert">{this.state.msg}</div>) : null }
+        { this.state.msg ? (<div className="alert alert-danger" role="alert">{this.state.msg}</div>) : null}
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <Field name="username" component={this.renderField} type="text" label="Username" id="userName" placeholder="ben1994" required={true} />
           <Field name="password" component={this.renderField} type="password" label="Password" id="password" placeholder="" required={true} />
@@ -99,10 +99,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-Login = connect(mapStateToProps, { 
+Login = connect(mapStateToProps, {
   login,
   clearErrors
- })(Login);
+})(Login);
 
 export default reduxForm({
   form: 'login',

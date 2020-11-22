@@ -16,7 +16,7 @@ class Navbar extends React.Component {
   renderAddDrink() {
     if (this.props.isAuthenticated || localStorage.getItem('token')) {
       return (
-            <Link to="/cocktails/new" className="nav-link">Add Drink</Link>
+        <Link to="/cocktails/new" className="nav-link">Add Drink</Link>
       )
     }
   }
@@ -38,7 +38,10 @@ class Navbar extends React.Component {
             {/* links */}
             <div className="navbar-nav mr-auto">
               <div className="nav-item">
-              {this.renderAddDrink()}
+                <Link to="/about" className="nav-link">About</Link>
+              </div>
+              <div className="nav-item">
+                {this.renderAddDrink()}
               </div>
             </div>
             {/* auth */}

@@ -8,6 +8,7 @@ import ProtectedRoute from '../protectedRoute';
 import GuestRoute from '../guestRoute';
 import Navbar from './Navbar';
 import LandingPage from './LandingPage';
+import About from './About';
 import Register from './auth/Register';
 import Login from './auth/Login';
 import CocktailList from './cocktails/CocktailList';
@@ -37,10 +38,10 @@ class App extends React.Component {
               <GuestRoute path="/" exact component={LandingPage} />
               <GuestRoute path="/register" exact component={Register} />
               <GuestRoute path="/login" exact component={Login} />
+              <Route path="/about" exact component={About} />
               <ProtectedRoute path="/cocktails" exact component={CocktailList} />
               <ProtectedRoute path="/cocktails/new" exact component={CocktailCreate} />
               <ProtectedRoute path="/cocktails/edit/:id" exact component={CocktailEdit} />
-              {/* <Route path="/cocktails/:id" exact component={CocktailShow} /> */}
               <Route path="*" component={() => "404 NOT FOUND"} />
             </Switch>
           </div>

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { CREATE_COCKTAIL, FETCH_COCKTAILS, FETCH_COCKTAIL, DELETE_COCKTAIL, EDIT_COCKTAIL, LOADING_COCKTAILS, FAIL_FETCH_COCKTAILS } from './types'
 import history from '../history';
+import { returnErrors } from '.';
 import { tokenConfig } from './config';
 
 // thunk allows us to write action creators that return a function instead of an action
@@ -12,8 +13,10 @@ export const fetchCocktails = () => async (dispatch, getState) => {
     const response = await axios.get('/api', tokenConfig(getState));
     await dispatch({ type: FETCH_COCKTAILS, payload: response.data })
   } catch (err) {
+    // here we are dispatching the action returned from the action creator function 'returnErrors'
+    dispatch(returnErrors(err.response.data, err.response.status, 'FAIL_FETCH_COCKTAILS'))
+
     dispatch({ type: FAIL_FETCH_COCKTAILS })
-    console.log(err)
   }
 };
 

@@ -5,15 +5,40 @@ import PropTypes from 'prop-types';
 import { ReactComponent as Cocktail } from '../../images/cocktail.svg';
 import { ReactComponent as Explosion } from '../../images/explosion.svg';
 
-import { fetchCocktails, deleteCocktail } from '../../actions'
+import { fetchCocktails, deleteCocktail, clearErrors } from '../../actions'
 
 import './CocktailList.css';
 
 class CocktailList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { msg: null };
+  }
 
   componentDidMount() {
     this.props.fetchCocktails();
   }
+
+  // -------------
+  // previous props argument allows us to check against current props
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+    // see if error has appeared
+    if (error !== prevProps.error) {
+      // check for login error
+      if (error.id === 'FAIL_FETCH_COCKTAILS') {
+        this.setState({ msg: error.msg.message })
+      } else {
+        this.setState({ msg: null })
+      }
+    }
+  }
+
+  // clears errors when un-mounting
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+  // -----------------
 
   checkIfField(cocktail, fieldName, key) {
     if (cocktail[fieldName]) {
@@ -60,6 +85,13 @@ class CocktailList extends React.Component {
       // this is where item loading would be useful, if item loading - cocktails loading. then you have no cocktails.
     } else if (this.props.cocktailsLoading) {
       return <div className="loading-div"><div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+    } else if (this.state.msg) {
+      // const errorMessage = 
+      return <>
+        <Explosion className="svg" />
+        <div className="text-center"><p>Error fetching cocktails, please try again later or report to an administrator.</p></div>
+        <div className="text-center"><p>{this.state.msg}</p></div>
+      </>
     } else {
       // https://www.manypixels.co/gallery/?color=68c8fd&page=1&s=drink
       return (
@@ -95,8 +127,9 @@ const mapStateToProps = (state) => {
     // we turn it into an array to make it easier to map over
     // Object.values is a built in JS function that takes an object as an argument and turns the values into an array
     cocktails: Object.values(state.cocktails.cocktails),
-    cocktailsLoading: state.cocktails.loading
+    cocktailsLoading: state.cocktails.loading,
+    error: state.error
   }
 }
 
-export default connect(mapStateToProps, { fetchCocktails, deleteCocktail })(CocktailList);
+export default connect(mapStateToProps, { fetchCocktails, deleteCocktail, clearErrors })(CocktailList);

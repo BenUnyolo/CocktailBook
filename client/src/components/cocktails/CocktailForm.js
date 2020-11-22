@@ -40,9 +40,9 @@ class CocktailForm extends React.Component {
             <div className="form-row" key={index}>
               {/* <Field name={`${ingredient}.name`} type="text" component={"renderField"} label="blah" /> */}
               {/* might do some special magic for the first labels */}
-              <Field name={`${ingredient}.ingredient`} component={this.renderField} label={`Ingredient ${index + 1}`} id={`formIngredient${index}`} placeholder="Long Island Sheet" classNm="col-auto" />
-              <Field name={`${ingredient}.amount`} component={this.renderField} label={`Amount`} id={`formIngredientAmount${index}`} placeholder="Long Island Sheet" classNm="col-2" />
-              <Field name={`${ingredient}.unit`} component={this.renderField} label={`Unit`} id={`formIngredientUnit${index}`} placeholder="Long Island Sheet" classNm="col-3" />
+              <Field name={`${ingredient}.ingredient`} component={this.renderField} label={`Ingredient ${index + 1}`} id={`formIngredient${index}`} placeholder="Vodka" classNm="col-auto" />
+              <Field name={`${ingredient}.amount`} component={this.renderField} label={`Amount`} id={`formIngredientAmount${index}`} placeholder="30" classNm="col-2" />
+              <Field name={`${ingredient}.unit`} component={this.renderField} label={`Unit`} id={`formIngredientUnit${index}`} placeholder="ml" classNm="col-3" />
               <button
                 // add align-items: center; to form-row
                 type="button"
@@ -74,7 +74,7 @@ class CocktailForm extends React.Component {
         <Field name="garnish" component={this.renderField} label="Garnish" id="formGarnish" placeholder="Lemon Twist" />
         <FieldArray name="ingredients" component={this.renderIngredients} />
         <Field name="preparation" component={this.renderField} label="Preparation" id="formPreparation" placeholder="Shake. Muddle. Strain." />
-        <Field name="source" component={this.renderField} label="Source" id="formSource" placeholder="http://ibaworld.biz" />
+        <Field name="source" component={this.renderField} label="Source" id="formSource" placeholder="https://imbibemagazine.com/category/recipes/cocktails-spirits-recipes/" />
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );
