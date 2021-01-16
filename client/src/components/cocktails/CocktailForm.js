@@ -31,27 +31,29 @@ class CocktailForm extends React.Component {
 
   renderIngredients = ({ fields }) => {
     return (
-      <div className="IngredientDiv px-0">
-        <button type="button" className="btn btn-secondary mb-3" onClick={() => fields.push({})}>Add Ingredient</button>
+      <div className="IngredientDiv px-0 mb-3">
+        <button type="button" className="btn btn-secondary mb-2" onClick={() => fields.push({})}>Add Ingredient</button>
 
-        <section className="ingredientsSection">
+        <section className={"ingredientsSection" + (fields.length > 0 ? " ingPadding" : "")}>
           {/* map over the fields array, generate inputs for each */}
-          {fields.map((ingredient, index) =>
-            <div className="form-row" key={index}>
+          {fields.map((ingredient, index) => {
+            return <div className="form-row align-items-end" key={index}>
               {/* <Field name={`${ingredient}.name`} type="text" component={"renderField"} label="blah" /> */}
               {/* might do some special magic for the first labels */}
-              <Field name={`${ingredient}.ingredient`} component={this.renderField} label={`Ingredient ${index + 1}`} id={`formIngredient${index}`} placeholder="Vodka" classNm="col-auto" />
-              <Field name={`${ingredient}.amount`} component={this.renderField} label={`Amount`} id={`formIngredientAmount${index}`} placeholder="30" classNm="col-2" />
-              <Field name={`${ingredient}.unit`} component={this.renderField} label={`Unit`} id={`formIngredientUnit${index}`} placeholder="ml" classNm="col-3" />
-              <button
-                // add align-items: center; to form-row
-                type="button"
-                title="Remove Ingredient"
-                className="btn btn-warning"
-                // className="col-1"
-                onClick={() => fields.remove(index)}>X</button>
+              <Field name={`${ingredient}.ingredient`} component={this.renderField} label={`Ingredient ${index + 1}`} id={`formIngredient${index}`} placeholder="Vodka" classNm="col-md-4" />
+              <Field name={`${ingredient}.amount`} component={this.renderField} label={`Amount`} id={`formIngredientAmount${index}`} placeholder="30" classNm="col-md-2" />
+              <Field name={`${ingredient}.unit`} component={this.renderField} label={`Unit`} id={`formIngredientUnit${index}`} placeholder="ml" classNm="col-md-3" />
+              <div className="closeDiv col-md-1 mt-2">
+                <button
+                  // add align-items: center; to form-row
+                  type="button"
+                  title="Remove Ingredient"
+                  className="btn btn-warning"
+                  // className="col-1"
+                  onClick={() => fields.remove(index)}>X</button>
+              </div>
             </div>
-          )
+          })
           }
         </section>
       </div>

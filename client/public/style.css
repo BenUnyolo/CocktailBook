@@ -1,4 +1,14 @@
-
+.landingBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-image: url('landing-bg.jpg');
+}
 
 label {
   width: 100%;
@@ -12,19 +22,35 @@ label {
 .ingredientsSection {
   /* padding:2rem; */
   padding: 0 10px;
-  border-radius:.5rem!important;
+  border-radius:.5rem;
   background-color:#eee;
-  /* border: 2px solid grey; */
 }
 
-.landingBackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-size: cover;
-  background-position: center;
-  background-image: url('landing-bg.jpg');
+.ingPadding {
+  padding: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.ingredientsSection .form-group {
+  margin-bottom: 0;
+}
+
+.ingredientsSection .form-row {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) { 
+  .ingredientsSection .form-row {
+    padding: 5px;
+    border-radius:.5rem;
+    background-color:#DCDCDC;
+  }
+}
+
+.ingredientsSection .form-row:last-child {
+  margin-bottom: 0;
+}
+
+.ingredientsSection label {
+  margin-bottom: 0;
 }

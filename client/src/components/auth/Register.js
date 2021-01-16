@@ -64,10 +64,10 @@ class Register extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           {/* the <Field/> component connects each input to the store, the component option creates the actual input */}
           {/* when we add a field that form doesn't know about, it will pass it as a prop through the component field */}
-          <Field name="username" component={this.renderField} type="text" label="Username" id="userName" placeholder="ben1994" required={true} />
-          <Field name="email" component={this.renderField} type="email" label="Email" id="email" placeholder="ben@email.com" required={true} />
-          <Field name="password" component={this.renderField} type="password" label="Password" id="password" placeholder="" required={true} />
-          <Field name="passwordCheck" component={this.renderField} type="password" label="Retyped Password" id="passwordCheck" placeholder="" required={true} />
+          <Field name="username" component={this.renderField} type="text" label="Username" id="userName" placeholder="username" required={true} />
+          <Field name="email" component={this.renderField} type="email" label="Email" id="email" placeholder="name@example.com" required={true} />
+          <Field name="password" component={this.renderField} type="password" label="Password" id="password" placeholder="********" required={true} />
+          <Field name="passwordCheck" component={this.renderField} type="password" label="Retyped Password" id="passwordCheck" placeholder="********" required={true} />
           <button type="submit" className="btn btn-primary">Register</button>
         </form>
       </div>

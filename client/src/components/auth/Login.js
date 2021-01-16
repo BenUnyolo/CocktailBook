@@ -62,8 +62,8 @@ class Login extends React.Component {
       <div>
         { this.state.msg ? (<div className="alert alert-danger" role="alert">{this.state.msg}</div>) : null}
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-          <Field name="username" component={this.renderField} type="text" label="Username" id="userName" placeholder="ben1994" required={true} />
-          <Field name="password" component={this.renderField} type="password" label="Password" id="password" placeholder="" required={true} />
+          <Field name="username" component={this.renderField} type="text" label="Username" id="userName" placeholder="username" required={true} />
+          <Field name="password" component={this.renderField} type="password" label="Password" id="password" placeholder="********" required={true} />
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
       </div>
